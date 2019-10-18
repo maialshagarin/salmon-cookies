@@ -42,7 +42,7 @@ shopList.push(new SweetShop('Lima', 2, 16, 4.6));
 //randor shops
 ///table
 var container = document.getElementById('shops-for-cookies');
-var table1 = document.createElement('table1');
+var table1 = document.createElement('table');
 container.appendChild(table1);
 //header row method
 function headerRow() {
