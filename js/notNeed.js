@@ -1,3 +1,6 @@
+
+
+
 /*render : function(){
     var container = document.getElementById('content-area');
    var h2 = document.createElement ('h2');

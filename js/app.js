@@ -1,6 +1,6 @@
 "use strict"
 var hour = ["6am ", '7am ', '8am', '9am', '10am', '11am', '12pm ', '1pm ', '2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm '];
-var footerRaw;
+var footerRow;
 function SweetShop(location, mincustomers, maxcustomers, theAverag) {
     this.location = location;
     this.mincustomers = mincustomers;
@@ -41,7 +41,7 @@ shopList.push(new SweetShop('Lima', 2, 16, 4.6));
 // console.log(lima);
 //randor shops
 ///table
-var container = document.getElementById('shops for cookies');
+var container = document.getElementById('shops-for-cookies');
 var table1 = document.createElement('table1');
 container.appendChild(table1);
 //header row method
@@ -102,16 +102,17 @@ function cellDataInformation() {
 }
 // //footer Row
 function footerData() {
-    var footerRow = document.createElement('tr');
-    table1.appendChild(footerRow);
+    var footerRowTr = document.createElement('tr');
+    footerRow= footerRowTr ;
+    table1.appendChild(footerRowTr);
     var td = document.createElement('td');
-    footerRow.appendChild(td);
+    footerRowTr.appendChild(td);
     td.textContent = 'Totals';
     var megaTotal = 0;
 
     for (var hourIndex = 0; hourIndex < hour.length; hourIndex++) {
 
-        td = document.createElement('td');
+        var td = document.createElement('td');
 
         footerRow.appendChild(td);
 
@@ -129,17 +130,43 @@ function footerData() {
         megaTotal += sum;
     }
 
-    td = document.createElement('td');
+   var td = document.createElement('td');
 
     footerRow.appendChild(td);
 
     td.textContent = megaTotal;
 }
 
-headerRow();
-cellDataInformation();
-footerData();
+headerRow(table1);
+cellDataInformation(table1);
+footerData(table1);
+
 //   create the new row ////
+
+
+
+
+
+
+function renderRaw() {
+    var tr = document.createElement('tr');
+    table1.appendChild(tr);
+    var td = document.createElement('td');
+    tr.appendChild(td);
+    var thecurrent =shopList[shopList.length-1];
+    console.log(thecurrent);
+    td.textContent = thecurrent.location;
+    //
+    for (var cellIndex = 0; cellIndex < hour.length; cellIndex++) {
+        var info = document.createElement('td');
+        tr.appendChild(info);
+        info.textContent = thecurrent.hourlySales[cellIndex];
+    }
+      // totaly daily sales
+     var td = document.createElement('td');
+      tr.appendChild(td);
+      td.textContent = thecurrent.dailySales;
+  }
 
 
 
@@ -151,15 +178,15 @@ function submitresult(event) {
     var theAverag = parseFloat(event.target.theAverag.value);
 
     var newShop = new SweetShop(locationName, mincustomers, maxcustomers, theAverag);
-    shopList.push(newShop)
+    shopList.push(newShop);
     console.log(newShop);
-    // table1.removeChild(footerRaw);
-    // var tr = document.createElement ('tr')
-    // table1.appendChild(tr);
-    // var td = document. createElement ("td");
-    // tr.appendChild (td);
-    newShop.cellDataInformation();
- 
+    table1.removeChild(footerRow);
+    
+    renderRaw();
+    footerData();
+
+   
+    
 }
 var form = document.getElementById('addShopForm');
 form.addEventListener('submit', submitresult);
