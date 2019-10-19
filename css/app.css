@@ -1,0 +1,39 @@
+head{
+    border-style: ridge;
+    background-position: center;
+    text-align: center;
+}
+h1 {
+    background-color: bisque;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 60px;
+  }
+body{
+    border-style: dotted;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    background-image: url("https://previews.123rf.com/images/prapass/prapass1307/prapass130700056/20862255-salmon-spread-on-cracker-cookies-on-white-background.jpg");
+}
+p {
+    font-family: "Times New Roman", Times, serif;
+  }
+
+table, th, td {
+    background-color: #cccccc;
+    border: 1px solid black;
+    background-position: center;
+    text-align: center;
+    font-size: 30px;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+ 
+  
